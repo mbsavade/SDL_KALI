@@ -1,0 +1,9 @@
+from scapy.all import *    #import scapy module to python
+
+def sniffer(packet):
+	if IP in packet:
+		#packet.show()      #this will show the entire details of the traffic in IP layer
+		pkt_src=packet[IP].src
+		pkt_dst=packet[IP].dst
+		print("Source IP : "+str(pkt_src)+"  "+"<------------>"+"  "+"Destination IP : "+str(pkt_dst))
+sniff(filter="ip",prn=sniffer)     #call Scapy's inbuilt function
